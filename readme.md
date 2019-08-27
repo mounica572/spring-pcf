@@ -37,7 +37,20 @@ This document outlines information and steps to run, test and deploy this projec
 	1.	cf help
 9.	Login to cf 
 	1.	cf login -a https://api.run.pivotal.io
+	
+	
+#### Running the Application
 
+1.	Cd into the application directory 
+2.	Mvn package 
+3.	‘mvn spring-boot:run 
+	1.	Or if you have spring boot dashboard installed, use the ui 	
+	1.	https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-spring-boot-dashboard 
+
+#### Deploying the application
+
+1.	Mvn package 
+2.	*cf push app-name -p target/app-name.jar 
 
 #### Add Mongo Database
 
@@ -64,20 +77,6 @@ This document outlines information and steps to run, test and deploy this projec
 *OR via the cf cli
 
 1.	TBD
-
-
-#### Running the Application
-
-1.	Cd into the application directory 
-2.	Mvn package 
-3.	‘mvn spring-boot:run 
-	1.	Or if you have spring boot dashboard installed, use the ui 	
-	1.	https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-spring-boot-dashboard 
-
-#### Deploying the application
-
-1.	Mvn package 
-2.	*cf push app-name -p target/app-name.jar 
 
 
 #### Front End
