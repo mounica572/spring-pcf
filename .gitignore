@@ -1,0 +1,10 @@
+# Don't track content of these folders
+node_modules/
+target/
+bin/
+mvnw*
+manifest.yaml
+# don't track hidden files
+.*
+!/.gitignore
+application.properties
