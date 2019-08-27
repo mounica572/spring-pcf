@@ -92,6 +92,7 @@ This document outlines information and steps to run, test and deploy this projec
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
 * [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#using-boot-devtools)
 * [Spring Data Reactive MongoDB](https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#boot-features-mongodb)
+*[Spring Boot Guide](https://spring.io/guides/gs/spring-boot/)
 
 
 
