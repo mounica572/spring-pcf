@@ -89,6 +89,9 @@ This document outlines information and steps to run, test and deploy this projec
 * PCF app manifests: https://docs.cloudfoundry.org/devguide/deploy-apps/manifest-attributes.html
 * Concourse: https://www.youtube.com/watch?v=1RRZHPlTkXs&feature=youtu.be&t=3586
 * Spinnaker: https://www.slideshare.net/Pivotal/making-microservices-smarter-with-istio-envoy-and-pivotal-service-mesh?next_slideshow=1
+* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
+* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#using-boot-devtools)
+* [Spring Data Reactive MongoDB](https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#boot-features-mongodb)
 
 
 
