@@ -9,7 +9,7 @@ This document outlines information and steps to run, test and deploy this projec
 
 ## Project Repo
 
-[https://github.com/awilcox/IMP](https://github.com/awilcox/IMP)
+[https://github.com/slalom/spring-boot-pcf.git](https://github.com/slalom/spring-boot-pcf.git)
 
 ## Development Environment
 
@@ -19,7 +19,7 @@ This document outlines information and steps to run, test and deploy this projec
 * Pivotal Cloud Foundry
  * Mongodb (pivotal service)
 
-
+### In order to set up on a new account in PCF and a new database, follow the instructiosn below.
 #### Sign up for pivotal cloud web services
 
 	1.	https://account.run.pivotal.io/z/uaa/sign-up 
@@ -36,12 +36,10 @@ This document outlines information and steps to run, test and deploy this projec
 		1.	cf login -a https://api.run.pivotal.io 
 
 
-#### Add Database
+#### Add Mongo Database
 
+##### In pivotal PCF add mongodb service
 
-* Add Mongo db
-
-    *In pivotal PCF add mongodb service
 	1.	Login to https://console.run.pivotal.io/ 
 	2.	Click on your app name 
 	3.	In the left tab click on marketplace and search for mongodb 
@@ -59,7 +57,6 @@ This document outlines information and steps to run, test and deploy this projec
 	15.	Check your db in the command line thus: mongo ds157857.mlab.com:57857/dbname -u username -p password 
 	16.	Change your mongo service name in manifest.yaml to your db name 
 		1.	   MONGO_SERVICE_NAME: "mymongodb" 
-		2.	 
 
 *OR via the cf cli
 
