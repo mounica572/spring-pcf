@@ -1,5 +1,5 @@
 ---
 applications:
- - name: spring-boot-pcf121
-   env:
-     MONGO_SERVICE_NAME: "mlab"
+  - name: helloapipythagoras
+    env:
+      MONGO_SERVICE_NAME: "mymongodb"
