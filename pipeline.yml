@@ -1,0 +1,29 @@
+resources:
+  - name: source-code-from-github
+    type: git
+    source:
+      uri: https://github.com/slalom/spring-boot-pcf.git
+      branch: master
+
+jobs:
+  - name: test-and-build
+    public: true
+    plan:
+      - get: source-code-from-github
+        trigger: true
+      - task: run-test-and-build-jar-file
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: java
+              tag: 8
+          inputs:
+          - name: source-code-from-github
+          outputs:
+          - name: jar-file
+          caches:
+          - path: source-code-from-github/.m2
+          run:
+            path: ./source-code-from-github/ci/test-and-build.sh
