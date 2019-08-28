@@ -1,38 +1,3 @@
-resources:
-  - name: spring-boot-pcf
-    type: git
-    source:
-      uri: https://github.com/slalom/spring-boot-pcf.git
-      branch: master
-
-jobs:
-  - name: test-and-build
-    public: true
-    plan:
-      - get: spring-boot-pcf
-        trigger: true
-      - task: run-test-and-build-jar-file
-        config:
-          platform: linux
-          image_resource:
-            type: docker-image
-            source:
-              repository: java
-              tag: 8
-          inputs:
-          - name: spring-boot-pcf
-          outputs:
-          - name: jar-file
-          caches:
-          - path: spring-boot-pcf/.m2
-          run:
-            path: sh
-            args:
-            - "-ec"
-            - echo 
-
-
-
 # Copy pipeline-secrets-example.yml to pipeline-secrets.yml and update with your values then run:
 # fly -t ci set-pipeline -p maven-cf-simple -c pipeline.yml -l pipeline-secrets.yml
 ---
@@ -64,4 +29,4 @@ jobs:
   - put: cf
     params:
       manifest: source-code/manifest.yml
-      path: build-output/concourse-maven-cf-simple-0.0.1-SNAPSHOT.jar
+      path: target/helloapi-0.0.1-SNAPSHOT.jar
