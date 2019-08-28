@@ -5,6 +5,7 @@ bin/
 manifest.yaml
 # don't track hidden files
 .*
+!/.mvn
 !/.gitignore
 application.properties
 pipeline-secrets.yml
