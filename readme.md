@@ -71,8 +71,13 @@ This document outlines information and steps to run, test and deploy this projec
 13.	Add a user with username and password 
 14.	add credentials to application.properties file: spring.data.mongodb.uri=mongodb://<dbusername>:<dbpassword>@<dburi> 
 15.	Check your db in the command line thus: mongo ds157857.mlab.com:57857/dbname -u username -p password 
-16.	Change your mongo service name in manifest.yaml to your db name 
-	1.	   MONGO_SERVICE_NAME: "mymongodb" 
+	
+16.	Change your mongo service name in manifest.yaml (manifest.yaml needs to be created at the root level) to your db name 
+	1.	   ---
+applications:
+ - name: yourappname
+   env:
+     MONGO_SERVICE_NAME: "yourdbinstancename" (find in PCF web services)
 
 *OR via the cf cli
 
