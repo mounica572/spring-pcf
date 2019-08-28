@@ -8,3 +8,4 @@ manifest.yaml
 .*
 !/.gitignore
 application.properties
+pipeline-secrets.yml

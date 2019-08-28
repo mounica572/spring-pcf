@@ -1,5 +1,5 @@
 resources:
-  - name: source-code-from-github
+  - name: spring-boot-pcf
     type: git
     source:
       uri: https://github.com/slalom/spring-boot-pcf.git
@@ -9,7 +9,7 @@ jobs:
   - name: test-and-build
     public: true
     plan:
-      - get: source-code-from-github
+      - get: spring-boot-pcf
         trigger: true
       - task: run-test-and-build-jar-file
         config:
@@ -20,10 +20,48 @@ jobs:
               repository: java
               tag: 8
           inputs:
-          - name: source-code-from-github
+          - name: spring-boot-pcf
           outputs:
           - name: jar-file
           caches:
-          - path: source-code-from-github/.m2
+          - path: spring-boot-pcf/.m2
           run:
-            path: ./source-code-from-github/ci/test-and-build.sh
+            path: sh
+            args:
+            - "-ec"
+            - echo 
+
+
+
+# Copy pipeline-secrets-example.yml to pipeline-secrets.yml and update with your values then run:
+# fly -t ci set-pipeline -p maven-cf-simple -c pipeline.yml -l pipeline-secrets.yml
+---
+resources:
+- name: source-code
+  type: git
+  source:
+    uri: https://github.com/slalom/spring-boot-pcf.git
+    branch: master
+
+- name: cf
+  type: cf
+  source:
+    api: {{cf-api}}
+    username: {{cf-username}}
+    password: {{cf-password}}
+    organization: {{cf-organization}}
+    space: {{cf-space}}
+    #skip_cert_check: true
+
+jobs:
+- name: build
+  public: true
+  plan:
+  - get: source-code
+    trigger: true
+  - task: build
+    file: source-code/ci/build.yml
+  - put: cf
+    params:
+      manifest: source-code/manifest.yml
+      path: build-output/concourse-maven-cf-simple-0.0.1-SNAPSHOT.jar
