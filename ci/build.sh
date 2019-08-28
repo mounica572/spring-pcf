@@ -2,6 +2,8 @@
 
 set -e -x
 
-cd ../
+cd source-code
   ./mvnw clean package
 cd ..
+
+cp source-code/target/helloapi-0.0.1-SNAPSHOT.jar  build-output/.
