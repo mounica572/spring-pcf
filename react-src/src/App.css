@@ -2,6 +2,8 @@ body {
   font-family: "Montserrat", sans-serif;
   color: #333;
   background-color: #efefefef;
+  line-height: 1.5em;
+  padding: 50px;
 }
 .message-window {
   width: 50%;
@@ -9,8 +11,9 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding: 30px;
+  padding-top: 30px;
   display: block;
-  margin-top: 100px;
+  margin-top: 50px;
   -webkit-box-shadow: inset 0px 0px 18px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: inset 0px 0px 18px 0px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0px 0px 18px 0px rgba(0, 0, 0, 0.5);
