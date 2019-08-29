@@ -7,8 +7,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      noteText: ""
+      noteText: "",
+      username: ""
     };
+    this.usernameHandler = this.usernameHandler.bind(this);
+  }
+
+  usernameHandler(un) {
+    this.setState({
+      username: un
+    });
+    console.log("username in app:", this.state.username);
   }
 
   updateNoteText(noteText) {
@@ -18,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <UserForm></UserForm>
+        <UserForm usernameHandler={this.usernameHandler}></UserForm>
         <MessageWindow></MessageWindow>
       </React.Fragment>
     );
