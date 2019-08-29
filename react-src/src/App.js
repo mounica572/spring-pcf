@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import MessageWindow from "./components/MessageWindow";
+import UserForm from "./components/UserForm";
 
 class App extends Component {
   constructor(props) {
@@ -17,19 +18,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container">
-          <div className="header"> Message Board App!! </div>
-          <input
-            type="text"
-            ref={input => {
-              this.textInput = input;
-            }}
-            className="textInput"
-            value={this.state.noteText}
-            onChangeText={noteText => this.updateNoteText(noteText)}
-          />
-          <div className="btn"> submit </div>
-        </div>
+        <UserForm></UserForm>
         <MessageWindow></MessageWindow>
       </React.Fragment>
     );
