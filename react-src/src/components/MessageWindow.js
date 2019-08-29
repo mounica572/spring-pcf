@@ -12,7 +12,6 @@ class MessageWindow extends Component {
   }
 
   formatDate = date => {
-    console.log("format: " + date);
     let d = new Date(date);
     var userTimezoneOffset = d.getTimezoneOffset() * 60000;
     let d2 = new Date(d.getTime() - userTimezoneOffset);
@@ -29,14 +28,12 @@ class MessageWindow extends Component {
       console.log("Connection to server opened.");
     };
     evtSource.onmessage = e => {
-      console.log("meesage: ", e.data);
       let tmp = [...this.state.messages, JSON.parse(e.data)];
       tmp = _.uniqBy(tmp, "id");
       this.setState({ messages: tmp });
-      console.log(this.state.messages);
     };
     evtSource.onerror = function(err) {
-      console.warn("EventSource failed:", err);
+      // console.warn("EventSource failed:", err);
     };
   }
   render() {
