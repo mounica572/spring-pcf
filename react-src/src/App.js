@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import MessageWindow from "./components/MessageWindow";
 import UserForm from "./components/UserForm";
+import MessageSubmit from "./components/MessageSubmit";
 
 class App extends Component {
   constructor(props) {
@@ -10,10 +11,13 @@ class App extends Component {
       noteText: "",
       username: "",
       messageClass: "hide",
-      usernameClass: "show"
+      usernameClass: "show",
+      messageSubmitClass: "hide"
     };
     this.usernameHandler = this.usernameHandler.bind(this);
     this.usernameClickHandler = this.usernameClickHandler.bind(this);
+    this.messageClickHandler = this.messageClickHandler.bind(this);
+
   }
 
   usernameHandler(un) {
@@ -23,7 +27,12 @@ class App extends Component {
   }
 
   usernameClickHandler() {
-    this.setState({ messageClass: "show", usernameClass: "hide" });
+    this.setState({ messageClass: "show",  messageSubmitClass: "show", usernameClass: "hide" });
+
+  }
+
+  messageClickHandler() {
+    // post method ?
   }
 
   updateNoteText(noteText) {
@@ -38,10 +47,19 @@ class App extends Component {
           usernameHandler={this.usernameHandler}
           usernameClickHandler={this.usernameClickHandler}
         ></UserForm>
-        <MessageWindow
-          messageClass={this.state.messageClass}
-          username={this.state.username}
-        ></MessageWindow>
+
+        <div class="chat-container">
+          <MessageWindow
+            messageClass={this.state.messageClass}
+            username={this.state.username}
+          ></MessageWindow>
+        
+          <MessageSubmit
+            messageClickHandler={this.messageClickHandler}
+            messageSubmitClass={this.state.messageSubmitClass}
+          ></MessageSubmit>
+
+        </div>
       </React.Fragment>
     );
   }
