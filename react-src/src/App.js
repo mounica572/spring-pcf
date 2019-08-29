@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       noteText: "",
-      username: ""
+      username: "",
+      messageClass: "hide"
     };
     this.usernameHandler = this.usernameHandler.bind(this);
   }
@@ -28,7 +29,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <UserForm usernameHandler={this.usernameHandler}></UserForm>
-        <MessageWindow></MessageWindow>
+        <MessageWindow messageClass={this.state.messageClass}></MessageWindow>
       </React.Fragment>
     );
   }
