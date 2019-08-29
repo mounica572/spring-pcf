@@ -6,10 +6,15 @@ class MessageWindow extends Component {
     super(props);
     this.state = { messages: [] };
     this.formatDate = this.formatDate.bind(this);
+    this.messagesEnd = null;
   }
 
   componentDidMount() {
     this.connect();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   formatDate = date => {
@@ -25,9 +30,7 @@ class MessageWindow extends Component {
 
     //https://helloapipythagoras.cfapps.io/stream/messages
 
-    evtSource.onopen = function() {
-      console.log("Connection to server opened.");
-    };
+    evtSource.onopen = function() {};
     evtSource.onmessage = e => {
       let tmp = [...this.state.messages, JSON.parse(e.data)];
       tmp = _.uniqBy(tmp, "id");
@@ -37,14 +40,32 @@ class MessageWindow extends Component {
       // console.warn("EventSource failed:", err);
     };
   }
+
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({
+      block: "end",
+      inline: "nearest",
+      behavior: "smooth"
+    });
+    //this.messagesEnd.scrollTop = this.messagesEnd.scrollHeight;
+  };
+
   render() {
     let formatDate = this.formatDate;
     let un = this.props.username;
     return (
       <React.Fragment>
-        <div className={`message-window ${this.props.messageClass}`}>
+        <div className={`welcome-pane ${this.props.messageClass}`}>
           <h3>Welcome, {this.props.username}</h3>
-          <ul className="message-list">
+          <hr />
+        </div>
+        <div className={`message-window ${this.props.messageClass}`}>
+          <ul
+            className="message-list"
+            ref={el => {
+              this.messagesEnd = el;
+            }}
+          >
             {this.state.messages.map(function(message, index) {
               return (
                 <li key={index}>
