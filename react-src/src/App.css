@@ -46,7 +46,19 @@ body {
 .message-list {
   list-style-type: none;
 }
+.message-list li {
+  margin-bottom: 10px;
+}
 .date {
   font-size: 9px;
-  color: #666;
+  color: #888;
+  line-height: 9px;
+  text-indent: 20px;
+}
+.username {
+  font-style: italic;
+}
+.message-text {
+  font-size: 18px;
+  font-weight: bold;
 }

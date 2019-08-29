@@ -5,6 +5,7 @@ class MessageWindow extends Component {
   constructor(props) {
     super(props);
     this.state = { messages: [] };
+    this.formatDate = this.formatDate.bind(this);
   }
 
   componentDidMount() {
@@ -37,7 +38,8 @@ class MessageWindow extends Component {
     };
   }
   render() {
-    this.formatDate("2019-08-27T18:29:53.162+0000");
+    let formatDate = this.formatDate;
+    let un = this.props.username;
     return (
       <React.Fragment>
         <div className={`message-window ${this.props.messageClass}`}>
@@ -46,7 +48,9 @@ class MessageWindow extends Component {
             {this.state.messages.map(function(message, index) {
               return (
                 <li key={index}>
-                  {message.text} <span className="date"></span>
+                  <span className="username">{un} : </span>
+                  <span className="message-text"> {message.text} </span>
+                  <div className="date">{formatDate(message.createdAt)}</div>
                 </li>
               );
             })}
