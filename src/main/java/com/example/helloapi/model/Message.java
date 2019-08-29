@@ -29,7 +29,7 @@ public class Message {
         this.id = id;
         this.text = text;
         this.username = username; 
-
+        
     }
 
     public String getId() {
