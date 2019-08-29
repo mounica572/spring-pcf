@@ -12,14 +12,12 @@ class App extends Component {
       username: "",
       messageClass: "hide",
       usernameClass: "show",
-      messageSubmitClass: "hide",
+      messageSubmitClass: "hide"
     };
     this.usernameHandler = this.usernameHandler.bind(this);
     this.usernameClickHandler = this.usernameClickHandler.bind(this);
     this.messageClickHandler = this.messageClickHandler.bind(this);
     this.messageChangeHandler = this.messageChangeHandler.bind(this);
-
-
   }
 
   usernameHandler(un) {
@@ -36,27 +34,30 @@ class App extends Component {
     });
   }
 
-  messageChangeHandler(msg){
+  messageChangeHandler(msg) {
     this.setState({
       noteText: msg
-    })
+    });
   }
 
   messageClickHandler() {
     console.log(this.state.noteText);
-    fetch('http://localhost:8080/messages', {
-      method: 'POST',
+    fetch("/messages", {
+      method: "POST",
       headers: {
-        "Content-Type":'application/json'
+        "Content-Type": "application/json"
       },
-       body: JSON.stringify({ text: this.state.noteText,  username: this.state.username})
+      body: JSON.stringify({
+        text: this.state.noteText,
+        username: this.state.username
+      })
     })
-    .then(function (data) {
-      console.log('Request success: ', data);
-    })
-    .catch(function (error) {
-      console.log('Request failure: ', error);
-    });
+      .then(function(data) {
+        console.log("Request success: ", data);
+      })
+      .catch(function(error) {
+        console.log("Request failure: ", error);
+      });
   }
 
   updateNoteText(noteText) {

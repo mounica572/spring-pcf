@@ -8,21 +8,23 @@ class MessageSubmit extends Component {
   }
 
   render() {
-    return(
+    return (
       <div className={`message-container ${this.props.messageSubmitClass}`}>
         <form>
-          <input className='message-form' 
-            id="message" 
+          <input
+            className="message-form"
+            id="message"
             type="text"
             onChange={e => this.props.messageChangeHandler(e.target.value)}
-            />
+          />
           <div>
+            <p className="text-center">Type your message here</p>
             <a
               type="button"
               className="btn btn-dark"
               onClick={e => this.props.messageClickHandler()}
             >
-             &rarr;   
+              Submit
             </a>
           </div>
         </form>

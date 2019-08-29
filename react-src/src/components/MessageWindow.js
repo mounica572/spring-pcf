@@ -25,10 +25,8 @@ class MessageWindow extends Component {
   };
 
   connect() {
-    //const evtSource = new EventSource("/stream/messages");
-    const evtSource = new EventSource("http://localhost:8090/stream/messages");
-
-    //https://helloapipythagoras.cfapps.io/stream/messages
+    const evtSource = new EventSource("/stream/messages");
+    //const evtSource = new EventSource("http://localhost:8090/stream/messages");
 
     evtSource.onopen = function() {};
     evtSource.onmessage = e => {
@@ -70,7 +68,7 @@ class MessageWindow extends Component {
               return (
                 <li key={index}>
                   <span className="username">
-                    {message.usenarme ? message.usenarme : un} :{" "}
+                    {message.username ? message.username : un} :{" "}
                   </span>
                   <span className="message-text"> {message.text} </span>
                   <div className="date">{formatDate(message.createdAt)}</div>

@@ -65,16 +65,12 @@ body {
 }
 
 .message-form {
-  width: 100%;
+  width: 80%;
   display: block;
-}
-.message-form input {
-  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
-  width: 250px;
-  height: 40px;
 }
 
 button {
