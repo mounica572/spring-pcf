@@ -4,15 +4,15 @@ import _ from "lodash";
 class MessageSubmit extends Component {
   constructor(props) {
     super(props);
-    this.state = {message: ''};
+    this.state = { message: "" };
   }
 
-
   render() {
-    return(
+    return (
       <div className={`message-form ${this.props.messageSubmitClass}`}>
         <form>
-          <input id="message" type="text"  />
+          <input id="message" type="text" />
+          <p className="text-center">Type your message here</p>
           <div>
             <a
               type="button"
