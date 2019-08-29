@@ -31,7 +31,6 @@ body {
   margin: 15px;
 }
 .message-window {
-  width: 50%;
   height: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -52,35 +51,30 @@ body {
 .message-list li {
   margin-bottom: 10px;
 }
-<<<<<<< Updated upstream
 .message-list li:last-child {
   color: purple;
 }
-=======
-.chat-container{
+.chat-container {
   width: 500px;
   margin-left: auto;
   margin-right: auto;
-
 }
 
-.message-form{
+.message-form {
   width: 100%;
   display: block;
-
 }
-input {
-  margin-left:100px; 
+.message-form input {
+  margin-left: 100px;
   width: 250px;
-  height: 40px; 
+  height: 40px;
 }
 
-button{
-  width: 50px; 
-  height: 50px; 
+button {
+  width: 50px;
+  height: 50px;
 }
 
->>>>>>> Stashed changes
 .date {
   font-size: 9px;
   color: #888;

@@ -18,22 +18,26 @@ public class MessageController {
     @Autowired
     private MessageRepository messageRepository;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/messages")
     public Flux<Message> getAllMessages() {
         return messageRepository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/messages")
     public Mono<Message> createMessages(@Valid @RequestBody Message message) {
         return messageRepository.save(message);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/messages/{id}")
     public Mono<ResponseEntity<Message>> getMessageById(@PathVariable(value = "id") String messageId) {
         return messageRepository.findById(messageId).map(savedMessage -> ResponseEntity.ok(savedMessage))
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/messages/{id}")
     public Mono<ResponseEntity<Void>> deleteMessage(@PathVariable(value = "id") String messageId) {
 

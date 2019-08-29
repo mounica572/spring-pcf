@@ -17,7 +17,6 @@ class App extends Component {
     this.usernameHandler = this.usernameHandler.bind(this);
     this.usernameClickHandler = this.usernameClickHandler.bind(this);
     this.messageClickHandler = this.messageClickHandler.bind(this);
-
   }
 
   usernameHandler(un) {
@@ -27,12 +26,27 @@ class App extends Component {
   }
 
   usernameClickHandler() {
-    this.setState({ messageClass: "show",  messageSubmitClass: "show", usernameClass: "hide" });
-
+    this.setState({
+      messageClass: "show",
+      messageSubmitClass: "show",
+      usernameClass: "hide"
+    });
   }
 
-  messageClickHandler() {
-    // post method ?
+  messageClickHandler(msg) {
+    fetch("http://localhost:8090/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ text: msg })
+    })
+      .then(function(data) {
+        console.log("Request success: ", data);
+      })
+      .catch(function(error) {
+        console.log("Request failure: ", error);
+      });
   }
 
   updateNoteText(noteText) {
@@ -53,12 +67,11 @@ class App extends Component {
             messageClass={this.state.messageClass}
             username={this.state.username}
           ></MessageWindow>
-        
+
           <MessageSubmit
             messageClickHandler={this.messageClickHandler}
             messageSubmitClass={this.state.messageSubmitClass}
           ></MessageSubmit>
-
         </div>
       </React.Fragment>
     );

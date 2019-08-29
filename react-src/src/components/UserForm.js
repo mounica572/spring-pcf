@@ -3,10 +3,7 @@ class UserForm extends Component {
   constructor(props) {
     super(props);
   }
-  onChange(e) {
-    this.setState({ username: e.target.value });
-    console.log(this.state.username);
-  }
+
   render() {
     return (
       <div className={`user-form ${this.props.usernameClass}`}>
@@ -20,7 +17,7 @@ class UserForm extends Component {
           <a
             type="button"
             className="btn btn-dark"
-            onClick={e => this.props.usernameClickHandler(e.target.value)}
+            onClick={e => this.props.usernameClickHandler()}
           >
             Submit
           </a>
