@@ -16,22 +16,33 @@ public class Message {
     @Size(max = 140)
     private String text;
 
+    @NotBlank
+    private String username; 
+
     @NotNull
     private Date createdAt = new Date();
 
     public Message() {
-
     }
 
-    public Message(String id, String text) {
+    public Message(String id, String text, String username) {
         this.id = id;
         this.text = text;
+        this.username = username; 
+
     }
 
     public String getId() {
         return id;
     }
 
+    public String getUsername(){
+        return username;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
     public void setId(String id) {
         this.id = id;
     }
