@@ -9,7 +9,7 @@ class UserForm extends Component {
   }
   render() {
     return (
-      <div className="user-form">
+      <div className={`user-form ${this.props.usernameClass}`}>
         <div className="header"> Please Enter a User Name </div>
         <input
           type="text"
@@ -17,7 +17,11 @@ class UserForm extends Component {
           onChange={e => this.props.usernameHandler(e.target.value)}
         />
         <div>
-          <a type="button" className="btn btn-dark">
+          <a
+            type="button"
+            className="btn btn-dark"
+            onClick={e => this.props.usernameClickHandler(e.target.value)}
+          >
             Submit
           </a>
         </div>

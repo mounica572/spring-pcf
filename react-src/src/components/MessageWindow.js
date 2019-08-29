@@ -39,17 +39,20 @@ class MessageWindow extends Component {
   render() {
     this.formatDate("2019-08-27T18:29:53.162+0000");
     return (
-      <div className={`message-window ${this.props.messageClass}`}>
-        <ul className="message-list">
-          {this.state.messages.map(function(message, index) {
-            return (
-              <li key={index}>
-                {message.text} <span className="date"></span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <React.Fragment>
+        <div className={`message-window ${this.props.messageClass}`}>
+          <h3>Welcome, {this.props.username}</h3>
+          <ul className="message-list">
+            {this.state.messages.map(function(message, index) {
+              return (
+                <li key={index}>
+                  {message.text} <span className="date"></span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </React.Fragment>
     );
   }
 }

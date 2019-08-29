@@ -9,16 +9,21 @@ class App extends Component {
     this.state = {
       noteText: "",
       username: "",
-      messageClass: "hide"
+      messageClass: "hide",
+      usernameClass: "show"
     };
     this.usernameHandler = this.usernameHandler.bind(this);
+    this.usernameClickHandler = this.usernameClickHandler.bind(this);
   }
 
   usernameHandler(un) {
     this.setState({
       username: un
     });
-    console.log("username in app:", this.state.username);
+  }
+
+  usernameClickHandler() {
+    this.setState({ messageClass: "show", usernameClass: "hide" });
   }
 
   updateNoteText(noteText) {
@@ -28,8 +33,15 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <UserForm usernameHandler={this.usernameHandler}></UserForm>
-        <MessageWindow messageClass={this.state.messageClass}></MessageWindow>
+        <UserForm
+          usernameClass={this.state.usernameClass}
+          usernameHandler={this.usernameHandler}
+          usernameClickHandler={this.usernameClickHandler}
+        ></UserForm>
+        <MessageWindow
+          messageClass={this.state.messageClass}
+          username={this.state.username}
+        ></MessageWindow>
       </React.Fragment>
     );
   }
