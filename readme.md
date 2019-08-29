@@ -98,3 +98,22 @@ This document outlines information and steps to run, test and deploy this projec
 - [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
 - [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#using-boot-devtools)
 - [Spring Data Reactive MongoDB](https://docs.spring.io/spring-boot/docs/{bootVersion}/reference/htmlsingle/#boot-features-mongodb) \*[Spring Boot Guide](https://spring.io/guides/gs/spring-boot/)
+
+### Setting up Concourse CI
+
+1. Install concourse - \$ wget https://concourse-ci.org/docker-compose.yml
+2. \$ docker-compose up -d (Make sure you don’t have a port conflict.
+   Concourse runs on 8080 by default.)
+3. Download fly cli tools (https://medium.com/concourse-ci/getting-started-with-concourse-ci-on-macos-fb3a49a8e6b4)
+4. brew cask install fly
+5. Set up pipeline (see resource below, or view pipeline in sourcecode)
+6. fly -t example set-pipeline --pipeline my-pipeline --config pipeline.yml
+7. Make sure your creds aren't in the pipeline.yml
+8. fly -t hello set-pipeline --pipeline my-pipeline --config pipeline.yml -l pipeline-secrets.yml
+
+### resource links
+
+- https://medium.com/concourse-ci/getting-started-with-concourse-ci-on-macos-fb3a49a8e6b4
+- https://github.com/eddytnk/deploy-springboot-app-using-concourse-ci/blob/master/mvnw
+- https://github.com/eddytnk/deploy-springboot-app-using-concourse-ci/blob/master/ci/pipeline.yml
+- https://github.com/patrickcrocker/concourse-maven-cf-simple
