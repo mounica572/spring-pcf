@@ -69,7 +69,9 @@ class MessageWindow extends Component {
             {this.state.messages.map(function(message, index) {
               return (
                 <li key={index}>
-                  <span className="username">{un} : </span>
+                  <span className="username">
+                    {message.usenarme ? message.usenarme : un} :{" "}
+                  </span>
                   <span className="message-text"> {message.text} </span>
                   <div className="date">{formatDate(message.createdAt)}</div>
                 </li>
