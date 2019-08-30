@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import _ from "lodash";
 
 class MessageWindow extends Component {
   constructor(props) {
@@ -7,6 +6,7 @@ class MessageWindow extends Component {
     this.state = { messages: [] };
     this.formatDate = this.formatDate.bind(this);
     this.messagesEnd = null;
+    console.log("props", this.props);
   }
 
   componentDidMount() {
@@ -27,12 +27,12 @@ class MessageWindow extends Component {
   connect() {
     const evtSource = new EventSource("/stream/messages");
     //const evtSource = new EventSource("http://localhost:8090/stream/messages");
-
     evtSource.onopen = function() {};
     evtSource.onmessage = e => {
-      let tmp = [...this.state.messages, JSON.parse(e.data)];
-      tmp = _.uniqBy(tmp, "id");
-      this.setState({ messages: tmp });
+      //  let tmp = [...this.state.messages, JSON.parse(e.data)];
+      //  tmp = _.uniqBy(tmp, "id");
+      //  this.setState({ messages: tmp });
+      this.props.messagesListHandler([JSON.parse(e.data)]);
     };
     evtSource.onerror = function(err) {
       // console.warn("EventSource failed:", err);
@@ -64,7 +64,7 @@ class MessageWindow extends Component {
               this.messagesEnd = el;
             }}
           >
-            {this.state.messages.map(function(message, index) {
+            {this.props.messages.map(function(message, index) {
               return (
                 <li key={index}>
                   <span className="username">

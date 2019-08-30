@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -47,15 +49,23 @@ public class MessageController {
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @DeleteMapping("/messages/")
+    public Mono<Void> deleteAll() {
+        return messageRepository.deleteAll();
+    }
+
     // websocket
 
-    /*
-     * @MessageMapping("/socket/messages")
-     * 
-     * @SendTo("/topic/messages") public Message message(String message) throws
-     * Exception { Thread.sleep(1000); // simulated delay return new Message("123",
-     * "test message"); }
-     */
+    @MessageMapping("/hello")
+
+    @SendTo("/topic/messages")
+
+    public Mono<Message> socketMessage(Message message) throws Exception {
+
+        return messageRepository.save(message);
+        // return new Message("123", "test message", message);
+    }
 
     // Messages are Sent to the client as Server Sent Events
     @CrossOrigin(origins = "http://localhost:3000")
