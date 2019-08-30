@@ -93,6 +93,11 @@ class App extends Component {
 
   messagesListHandler(msgArray) {
     let tmp = _.uniqBy([...this.state.messages, ...msgArray], "id");
+    tmp.sort(function compare(a, b) {
+      var dateA = new Date(a.createdAt);
+      var dateB = new Date(b.createdAt);
+      return dateA - dateB;
+    });
     this.setState({
       messages: tmp
     });
