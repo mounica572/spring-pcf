@@ -24,10 +24,10 @@ jobs:
   plan:
   - get: source-code
     trigger: true
-  - task: test
-    file: source-code/ci/test.yml
   - task: build
     file: source-code/ci/build.yml
+  - task: test
+    file: source-code/ci/test.yml
   - put: cf
     params:
       manifest: source-code/manifest.yml
