@@ -26,8 +26,6 @@ jobs:
     trigger: true
   - task: build
     file: source-code/ci/build.yml
-  - task: test
-    file: source-code/ci/test.yml
   - put: cf
     params:
       manifest: source-code/manifest.yml
