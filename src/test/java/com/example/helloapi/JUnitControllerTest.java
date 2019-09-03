@@ -11,6 +11,6 @@ public class JUnitControllerTest {
     public void MessagesControllerTest() {
         MessageController messageController = new MessageController();
         String result = messageController.getHi();
-        assertEquals(result, "Hi There dude!");
+        assertEquals(result, "Hi There!");
     }
 }
