@@ -24,6 +24,8 @@ jobs:
   plan:
   - get: source-code
     trigger: true
+  - task: test
+    file: source-code/ci/test.yml
   - task: build
     file: source-code/ci/build.yml
   - put: cf

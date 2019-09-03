@@ -21,6 +21,12 @@ public class MessageController {
     private MessageRepository messageRepository;
 
     @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/hi")
+    public String getHi() {
+        return "Hi There!";
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/messages")
     public Flux<Message> getAllMessages() {
         return messageRepository.findAll();

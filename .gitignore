@@ -2,6 +2,7 @@
 node_modules/
 target/
 bin/
+mvnw*
 manifest.yaml
 # don't track hidden files
 .*
