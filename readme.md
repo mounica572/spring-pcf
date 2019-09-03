@@ -84,7 +84,7 @@ This document outlines information and steps to run, test and deploy this projec
 
 \*OR via the cf cli
 
-1. TBD
+1. https://docs.run.pivotal.io/devguide/services/managing-services.html
 
 #### Front End
 
