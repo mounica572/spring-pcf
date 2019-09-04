@@ -86,6 +86,14 @@ This document outlines information and steps to run, test and deploy this projec
 
 1. https://docs.run.pivotal.io/devguide/services/managing-services.html
 
+- $ cf create-service mlab sandbox mydb
+- $ cf bind-service my-app mydb
+Binding service mydb to my-app in org my-org / space test as user@example.com...
+OK
+TIP: Use 'cf push' to ensure your env variable changes take effect
+
+- $ cf restart my-app
+
 #### Front End
 
 - Front end is TBD, probably will be react
