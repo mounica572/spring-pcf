@@ -3,7 +3,7 @@
 set -e -x
 
 cd source-code
-  cp ./react-src/build ./src/main/resources/static
+  cp -a ./react-src/build ./src/main/resources/static
   ./mvnw clean package
 cd ..
 
