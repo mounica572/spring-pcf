@@ -54,21 +54,34 @@ class App extends Component {
     this.connectSocket();
   }
 
+  stompFailureCallback(error) {
+    console.log("STOMP: " + error);
+    setTimeout(this.connectSocket, 5000);
+    console.log("STOMP: Reconecting in 5 seconds");
+  }
+
   connectSocket() {
     console.log("Stomp", Stomp);
     let messagesListHandler = this.messagesListHandler;
     var socket = new SockJS("/mywebsockets");
+    socket.onheartbeat = function() {
+      console.log("heartbeat");
+    };
     this.stompClient = Stomp.over(socket);
     let stmp = this.stompClient;
-    stmp.connect({}, function(frame) {
-      // setConnected(true);
-      console.log("Connected: " + frame);
-      stmp.subscribe("/topic/messages", function(message) {
-        console.log("socket: ", message);
-        let msg = JSON.parse(message.body);
-        messagesListHandler([msg]);
-      });
-    });
+    stmp.connect(
+      {},
+      function(frame) {
+        // setConnected(true);
+        console.log("Connected: " + frame);
+        stmp.subscribe("/topic/messages", function(message) {
+          console.log("socket: ", message);
+          let msg = JSON.parse(message.body);
+          messagesListHandler([msg]);
+        });
+      },
+      this.stompFailureCallback
+    );
   }
 
   usernameHandler(un) {
