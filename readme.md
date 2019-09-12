@@ -1,7 +1,4 @@
-Spring Boot PCF Git Project
-Readme
-
-Spring Boot application deployed to Pivotal Cloud Foundry
+# Spring Boot PCF Demo
 
 ![alt text](https://github.com/slalom/spring-boot-pcf/blob/master/springbootpcfdiagram.jpg?raw=true "diagram")
 
